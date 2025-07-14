@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>امپراطوری ایران ۲۰۲۷ - بازی استراتژیک</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="game-container">
+        <!-- هدر بازی -->
+        <header class="game-header">
+            <h1>🏛️ امپراطوری ایران ۲۰۲۷</h1>
+            <div class="header-stats">
+                <div class="stat-item">
+                    <span class="stat-label">سال:</span>
+                    <span id="current-year">۲۰۲۷</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">نوبت:</span>
+                    <span id="current-turn">۱</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- منوی اصلی -->
+        <nav class="main-menu">
+            <button class="menu-btn active" data-tab="empire">🏰 امپراطوری</button>
+            <button class="menu-btn" data-tab="resources">💰 منابع</button>
+            <button class="menu-btn" data-tab="military">⚔️ نیروی نظامی</button>
+            <button class="menu-btn" data-tab="diplomacy">🤝 دیپلماسی</button>
+            <button class="menu-btn" data-tab="research">🔬 تحقیقات</button>
+            <button class="menu-btn" data-tab="world">🌍 نقشه جهان</button>
+        </nav>
+
+        <!-- صفحه امپراطوری -->
+        <div id="empire-tab" class="tab-content active">
+            <div class="empire-overview">
+                <div class="country-info">
+                    <h2>🇮🇷 امپراطوری ایران</h2>
+                    <div class="country-stats">
+                        <div class="stat-card">
+                            <div class="stat-icon">👥</div>
+                            <div class="stat-info">
+                                <span class="stat-value" id="population">۸۵,۰۰۰,۰۰۰</span>
+                                <span class="stat-name">جمعیت</span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">🌟</div>
+                            <div class="stat-info">
+                                <span class="stat-value" id="happiness">۷۵٪</span>
+                                <span class="stat-name">رضایتمندی</span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">🏭</div>
+                            <div class="stat-info">
+                                <span class="stat-value" id="industry">۶۵٪</span>
+                                <span class="stat-name">صنعت</span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">🎯</div>
+                            <div class="stat-info">
+                                <span class="stat-value" id="stability">۸۰٪</span>
+                                <span class="stat-name">ثبات</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="regions-section">
+                    <h3>🗺️ استان‌های امپراطوری</h3>
+                    <div class="regions-grid" id="regions-list">
+                        <!-- این قسمت با JavaScript پر می‌شود -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- صفحه منابع -->
+        <div id="resources-tab" class="tab-content">
+            <div class="resources-overview">
+                <h2>💰 مدیریت منابع</h2>
+                <div class="resources-grid">
+                    <div class="resource-card">
+                        <div class="resource-icon">💰</div>
+                        <div class="resource-info">
+                            <span class="resource-amount" id="gold">۱۰۰,۰۰۰</span>
+                            <span class="resource-name">طلا</span>
+                            <span class="resource-income">+۱۵,۰۰۰ در نوبت</span>
+                        </div>
+                    </div>
+                    <div class="resource-card">
+                        <div class="resource-icon">🌾</div>
+                        <div class="resource-info">
+                            <span class="resource-amount" id="food">۸۰,۰۰۰</span>
+                            <span class="resource-name">غذا</span>
+                            <span class="resource-income">+۱۲,۰۰۰ در نوبت</span>
+                        </div>
+                    </div>
+                    <div class="resource-card">
+                        <div class="resource-icon">⚡</div>
+                        <div class="resource-info">
+                            <span class="resource-amount" id="energy">۶۰,۰۰۰</span>
+                            <span class="resource-name">انرژی</span>
+                            <span class="resource-income">+۸,۰۰۰ در نوبت</span>
+                        </div>
+                    </div>
+                    <div class="resource-card">
+                        <div class="resource-icon">🏭</div>
+                        <div class="resource-info">
+                            <span class="resource-amount" id="production">۴۵,۰۰۰</span>
+                            <span class="resource-name">تولید</span>
+                            <span class="resource-income">+۶,۰۰۰ در نوبت</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="economic-actions">
+                    <h3>🏗️ پروژه‌های اقتصادی</h3>
+                    <div class="projects-grid">
+                        <div class="project-card">
+                            <h4>🏦 ساخت بانک مرکزی</h4>
+                            <p>درآمد طلا +۲۰٪</p>
+                            <div class="project-cost">هزینه: ۲۰,۰۰۰ طلا</div>
+                            <button class="project-btn" onclick="buildProject('bank')">ساخت</button>
+                        </div>
+                        <div class="project-card">
+                            <h4>🚜 توسعه کشاورزی</h4>
+                            <p>تولید غذا +۳۰٪</p>
+                            <div class="project-cost">هزینه: ۱۵,۰۰۰ طلا</div>
+                            <button class="project-btn" onclick="buildProject('farm')">ساخت</button>
+                        </div>
+                        <div class="project-card">
+                            <h4>⚡ نیروگاه برق</h4>
+                            <p>تولید انرژی +۲۵٪</p>
+                            <div class="project-cost">هزینه: ۲۵,۰۰۰ طلا</div>
+                            <button class="project-btn" onclick="buildProject('powerplant')">ساخت</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- صفحه نیروی نظامی -->
+        <div id="military-tab" class="tab-content">
+            <div class="military-overview">
+                <h2>⚔️ نیروی نظامی</h2>
+                <div class="military-stats">
+                    <div class="military-card">
+                        <div class="military-icon">🪖</div>
+                        <div class="military-info">
+                            <span class="military-amount" id="infantry">۵۰,۰۰۰</span>
+                            <span class="military-name">پیاده نظام</span>
+                        </div>
+                    </div>
+                    <div class="military-card">
+                        <div class="military-icon">🚁</div>
+                        <div class="military-info">
+                            <span class="military-amount" id="air-force">۲۵۰</span>
+                            <span class="military-name">نیروی هوایی</span>
+                        </div>
+                    </div>
+                    <div class="military-card">
+                        <div class="military-icon">🚢</div>
+                        <div class="military-info">
+                            <span class="military-amount" id="navy">۱۵۰</span>
+                            <span class="military-name">نیروی دریایی</span>
+                        </div>
+                    </div>
+                    <div class="military-card">
+                        <div class="military-icon">🚀</div>
+                        <div class="military-info">
+                            <span class="military-amount" id="missiles">۱۰۰</span>
+                            <span class="military-name">موشک‌ها</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="recruitment-section">
+                    <h3>🎖️ استخدام نیرو</h3>
+                    <div class="recruitment-grid">
+                        <div class="recruitment-card">
+                            <h4>🪖 آموزش سرباز</h4>
+                            <p>+۱,۰۰۰ پیاده نظام</p>
+                            <div class="recruitment-cost">هزینه: ۵,۰۰۰ طلا</div>
+                            <button class="recruitment-btn" onclick="recruitUnit('infantry')">استخدام</button>
+                        </div>
+                        <div class="recruitment-card">
+                            <h4>✈️ ساخت جنگنده</h4>
+                            <p>+۱۰ جنگنده</p>
+                            <div class="recruitment-cost">هزینه: ۲۰,۰۰۰ طلا</div>
+                            <button class="recruitment-btn" onclick="recruitUnit('airforce')">ساخت</button>
+                        </div>
+                        <div class="recruitment-card">
+                            <h4>🚢 ساخت ناوشکن</h4>
+                            <p>+۵ ناوشکن</p>
+                            <div class="recruitment-cost">هزینه: ۳۰,۰۰۰ طلا</div>
+                            <button class="recruitment-btn" onclick="recruitUnit('navy')">ساخت</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- صفحه دیپلماسی -->
+        <div id="diplomacy-tab" class="tab-content">
+            <div class="diplomacy-overview">
+                <h2>🤝 روابط دیپلماتیک</h2>
+                <div class="countries-list">
+                    <div class="country-relation">
+                        <div class="country-flag">🇺🇸</div>
+                        <div class="country-name">ایالات متحده</div>
+                        <div class="relation-status neutral">بی‌طرف</div>
+                        <div class="diplomacy-actions">
+                            <button onclick="changeDiplomacy('usa', 'alliance')">اتحاد</button>
+                            <button onclick="changeDiplomacy('usa', 'trade')">تجارت</button>
+                            <button onclick="changeDiplomacy('usa', 'hostility')">خصومت</button>
+                        </div>
+                    </div>
+                    <div class="country-relation">
+                        <div class="country-flag">🇷🇺</div>
+                        <div class="country-name">روسیه</div>
+                        <div class="relation-status friendly">دوستانه</div>
+                        <div class="diplomacy-actions">
+                            <button onclick="changeDiplomacy('russia', 'alliance')">اتحاد</button>
+                            <button onclick="changeDiplomacy('russia', 'trade')">تجارت</button>
+                            <button onclick="changeDiplomacy('russia', 'hostility')">خصومت</button>
+                        </div>
+                    </div>
+                    <div class="country-relation">
+                        <div class="country-flag">🇨🇳</div>
+                        <div class="country-name">چین</div>
+                        <div class="relation-status friendly">دوستانه</div>
+                        <div class="diplomacy-actions">
+                            <button onclick="changeDiplomacy('china', 'alliance')">اتحاد</button>
+                            <button onclick="changeDiplomacy('china', 'trade')">تجارت</button>
+                            <button onclick="changeDiplomacy('china', 'hostility')">خصومت</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- صفحه تحقیقات -->
+        <div id="research-tab" class="tab-content">
+            <div class="research-overview">
+                <h2>🔬 تحقیقات و فناوری</h2>
+                <div class="research-points">
+                    <div class="research-stat">
+                        <span class="research-icon">🧪</span>
+                        <span>امتیاز تحقیق: <span id="research-points">۲۵,۰۰۰</span></span>
+                    </div>
+                </div>
+                <div class="research-tree">
+                    <div class="research-category">
+                        <h3>🏭 فناوری صنعتی</h3>
+                        <div class="research-item">
+                            <h4>🤖 اتوماسیون صنعتی</h4>
+                            <p>تولید +۲۰٪</p>
+                            <div class="research-cost">هزینه: ۱۰,۰۰۰ امتیاز</div>
+                            <button onclick="research('automation')">تحقیق</button>
+                        </div>
+                    </div>
+                    <div class="research-category">
+                        <h3>⚔️ فناوری نظامی</h3>
+                        <div class="research-item">
+                            <h4>🚀 موشک‌های هوشمند</h4>
+                            <p>قدرت نظامی +۳۰٪</p>
+                            <div class="research-cost">هزینه: ۱۵,۰۰۰ امتیاز</div>
+                            <button onclick="research('smart-missiles')">تحقیق</button>
+                        </div>
+                    </div>
+                    <div class="research-category">
+                        <h3>🌱 فناوری زیست‌محیطی</h3>
+                        <div class="research-item">
+                            <h4>☀️ انرژی خورشیدی</h4>
+                            <p>تولید انرژی +۲۵٪</p>
+                            <div class="research-cost">هزینه: ۸,۰۰۰ امتیاز</div>
+                            <button onclick="research('solar-energy')">تحقیق</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- صفحه نقشه جهان -->
+        <div id="world-tab" class="tab-content">
+            <div class="world-overview">
+                <h2>🌍 نقشه جهان</h2>
+                <div class="world-map">
+                    <div class="region iran" onclick="selectRegion('iran')">
+                        <span class="region-name">ایران</span>
+                        <span class="region-power">قدرت: ۸۵</span>
+                    </div>
+                    <div class="region usa" onclick="selectRegion('usa')">
+                        <span class="region-name">آمریکا</span>
+                        <span class="region-power">قدرت: ۹۵</span>
+                    </div>
+                    <div class="region russia" onclick="selectRegion('russia')">
+                        <span class="region-name">روسیه</span>
+                        <span class="region-power">قدرت: ۸۰</span>
+                    </div>
+                    <div class="region china" onclick="selectRegion('china')">
+                        <span class="region-name">چین</span>
+                        <span class="region-power">قدرت: ۹۰</span>
+                    </div>
+                </div>
+                <div class="world-events">
+                    <h3>📰 اخبار جهان</h3>
+                    <div id="world-news">
+                        <div class="news-item">
+                            <span class="news-date">سال ۲۰۲۷</span>
+                            <span class="news-text">تنش‌های اقتصادی در منطقه افزایش یافته است</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- کنترل‌های بازی -->
+        <div class="game-controls">
+            <button class="next-turn-btn" onclick="nextTurn()">🔄 نوبت بعدی</button>
+            <button class="save-game-btn" onclick="saveGame()">💾 ذخیره بازی</button>
+            <button class="settings-btn" onclick="openSettings()">⚙️ تنظیمات</button>
+        </div>
+
+        <!-- رویدادها و پیام‌ها -->
+        <div id="event-modal" class="modal hidden">
+            <div class="modal-content">
+                <h3 id="event-title">رویداد جدید</h3>
+                <p id="event-description">توضیحات رویداد</p>
+                <div class="event-choices">
+                    <button id="choice-1" onclick="handleEventChoice(1)">گزینه ۱</button>
+                    <button id="choice-2" onclick="handleEventChoice(2)">گزینه ۲</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
