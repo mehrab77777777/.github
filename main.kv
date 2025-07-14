@@ -1,0 +1,40 @@
+<Game>:
+    orientation: 'vertical'
+    padding: 20
+    spacing: 10
+    Spinner:
+        text: root.کشور_بازیکن
+        values: ['ایران', 'ترکیه', 'عربستان', 'مصر', 'پاکستان']
+        on_text: root.انتخاب_کشور(self.text)
+    Label:
+        text: 'کشور: ' + root.کشور_بازیکن
+        font_size: 22
+    Label:
+        text: 'پول: ' + str(root.پول)
+        font_size: 20
+    Label:
+        text: 'ارتش: ' + str(root.ارتش)
+        font_size: 20
+    Label:
+        text: 'فناوری: ' + str(root.فناوری)
+        font_size: 20
+    Label:
+        text: 'سال: ' + str(root.سال)
+        font_size: 20
+    Label:
+        text: root.پیام
+        font_size: 18
+        color: 1,0,0,1
+    BoxLayout:
+        size_hint_y: None
+        height: 50
+        spacing: 10
+        Button:
+            text: 'حمله'
+            on_press: root.حمله()
+        Button:
+            text: 'دیپلماسی'
+            on_press: root.دیپلماسی()
+        Button:
+            text: 'سال بعد'
+            on_press: root.سال_بعد()
