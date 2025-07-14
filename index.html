@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>امپراطوری من - بازی استراتژیک آنلاین</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>امپراطوری من ۲۰۲۷</h1>
+  </header>
+
+  <!-- صفحه انتخاب کشور -->
+  <section id="choose-country" class="screen active">
+    <h2>کشور خود را انتخاب کنید</h2>
+    <div id="country-options" class="options"></div>
+    <button id="start-btn" disabled>شروع بازی</button>
+  </section>
+
+  <!-- صفحه اصلی بازی -->
+  <section id="game-screen" class="screen">
+    <div id="status"></div>
+
+    <div id="actions">
+      <button data-action="invest">سرمایه‌گذاری اقتصادی</button>
+      <button data-action="tech">تحقیق فناوری</button>
+      <button data-action="army">تقویت ارتش</button>
+      <button data-action="attack">حمله</button>
+      <button data-action="endTurn">پایان نوبت</button>
+    </div>
+
+    <div id="log"></div>
+  </section>
+
+  <footer>
+    <a href="https://github.com/username/empire-2027-fa" target="_blank" rel="noopener">کد در گیت‌هاب</a>
+  </footer>
+
+  <script src="game.js"></script>
+</body>
+</html>
